@@ -4,7 +4,7 @@ return SynthDefinition {
   author = "YAMAMI Taro [mitarothanken@gmail.com]",
   beta = true,
   Section {
-    name = "Global",
+    name = "Reverb/Chorus",
     Group {
       name = "Reverb",
       Parameter {
@@ -332,6 +332,177 @@ return SynthDefinition {
         name = "Input Mode",
         number = 0,
         items = { "Mono", "Stereo" },
+        item_values = { 0, 1 },
+        default_value = 1
+      }
+    }
+  },
+  Section {
+    name = "Multi EQ",
+    Group {
+      name = "Lo (32Hz - 2.0kHz)",
+      Parameter {
+        id = "nsx_39_global_meq_gain1",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x01, "vv", 0xF7},
+        name = "Gain (-12dB - +12dB)",
+        number = 0,
+        min_value = 0x34,
+        max_value = 0x4C,
+        default_value = 0x40
+      },
+      Parameter {
+        id = "nsx_39_global_meq_freq1",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x02, "vv", 0xF7},
+        name = "Freq",
+        number = 0,
+        min_value = 0x04,
+        max_value = 0x28,
+        default_value = 0x0C
+      },
+      Parameter {
+        id = "nsx_39_global_meq_q1",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x03, "vv", 0xF7},
+        name = "Q (0.1 - 12.0)",
+        number = 0,
+        min_value = 0x01,
+        max_value = 0x78,
+        default_value = 0x07
+      },
+      Parameter {
+        id = "nsx_39_global_meq_shape1",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x04, "vv", 0xF7},
+        name = "Shape",
+        number = 0,
+        items = { "Shelving", "Peaking" },
+        item_values = { 0, 1 },
+        default_value = 1
+      }
+    },
+    Group {
+      name = "Lo-Mid (100Hz - 10.0kHz)",
+      Parameter {
+        id = "nsx_39_global_meq_gain2",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x05, "vv", 0xF7},
+        name = "Gain (-12dB - +12dB)",
+        number = 0,
+        min_value = 0x34,
+        max_value = 0x4C,
+        default_value = 0x40
+      },
+      Parameter {
+        id = "nsx_39_global_meq_freq2",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x06, "vv", 0xF7},
+        name = "Freq",
+        number = 0,
+        min_value = 0x0E,
+        max_value = 0x36,
+        default_value = 0x1C
+      },
+      Parameter {
+        id = "nsx_39_global_meq_q2",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x07, "vv", 0xF7},
+        name = "Q (0.1 - 12.0)",
+        number = 0,
+        min_value = 0x01,
+        max_value = 0x78,
+        default_value = 0x07
+      }
+    },
+    Group {
+      name = "Mid (100Hz - 10.0kHz)",
+      Parameter {
+        id = "nsx_39_global_meq_gain3",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x09, "vv", 0xF7},
+        name = "Gain (-12dB - +12dB)",
+        number = 0,
+        min_value = 0x34,
+        max_value = 0x4C,
+        default_value = 0x40
+      },
+      Parameter {
+        id = "nsx_39_global_meq_freq3",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x0A, "vv", 0xF7},
+        name = "Freq",
+        number = 0,
+        min_value = 0x0E,
+        max_value = 0x36,
+        default_value = 0x22
+      },
+      Parameter {
+        id = "nsx_39_global_meq_q3",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x0B, "vv", 0xF7},
+        name = "Q (0.1 - 12.0)",
+        number = 0,
+        min_value = 0x01,
+        max_value = 0x78,
+        default_value = 0x07
+      }
+    },
+    Group {
+      name = "Hi-Mid (100Hz - 10.0kHz)",
+      Parameter {
+        id = "nsx_39_global_meq_gain4",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x0D, "vv", 0xF7},
+        name = "Gain (-12dB - +12dB)",
+        number = 0,
+        min_value = 0x34,
+        max_value = 0x4C,
+        default_value = 0x40
+      },
+      Parameter {
+        id = "nsx_39_global_meq_freq4",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x0E, "vv", 0xF7},
+        name = "Freq",
+        number = 0,
+        min_value = 0x0E,
+        max_value = 0x36,
+        default_value = 0x2E
+      },
+      Parameter {
+        id = "nsx_39_global_meq_q4",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x0F, "vv", 0xF7},
+        name = "Q (0.1 - 12.0)",
+        number = 0,
+        min_value = 0x01,
+        max_value = 0x78,
+        default_value = 0x07
+      }
+    },
+    Group {
+      name = "Hi (0.5kHz - 16kHz)",
+      Parameter {
+        id = "nsx_39_global_meq_gain5",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x11, "vv", 0xF7},
+        name = "Gain (-12dB - +12dB)",
+        number = 0,
+        min_value = 0x34,
+        max_value = 0x4C,
+        default_value = 0x40
+      },
+      Parameter {
+        id = "nsx_39_global_meq_freq5",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x12, "vv", 0xF7},
+        name = "Freq",
+        number = 0,
+        min_value = 0x1C,
+        max_value = 0x3A,
+        default_value = 0x34
+      },
+      Parameter {
+        id = "nsx_39_global_meq_q5",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x13, "vv", 0xF7},
+        name = "Q (0.1 - 12.0)",
+        number = 0,
+        min_value = 0x01,
+        max_value = 0x78,
+        default_value = 0x07
+      },
+      Parameter {
+        id = "nsx_39_global_meq_shape5",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x40, 0x14, "vv", 0xF7},
+        name = "Shape",
+        number = 0,
+        items = { "Shelving", "Peaking" },
         item_values = { 0, 1 },
         default_value = 1
       }
