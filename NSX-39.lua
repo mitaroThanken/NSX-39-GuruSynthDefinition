@@ -154,7 +154,36 @@ return SynthDefinition {
     Group {
       name = "Chorus",
       Parameter {
-        id = "nsx_39_ch1_chorus_send_level",
+        id = "nsx_39_global_chorus_type",
+        name = "Type",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x20, "vv", 0x00, 0xF7},
+        number = 0,
+        items = {
+          "OFF",
+          "CHORUS 1", "CHORUS 2", "CHORUS 3", "CHORUS 4", 
+          "CHORUS 5", "CHORUS 6", "CHORUS 7", "CHORUS 8", 
+          "GM CHORUS 1", "GM CHORUS 2", "GM CHORUS 3", "GM CHORUS 4", 
+          "FB CHORUS", 
+          "CELESTE 1", "CELESTE 2", 
+          "FLANGER 1", "FLANGER 2", "FLANGER 3", "FLANGER 4", 
+          "FLANGER 5", "GM FLANGER", 
+          "SYMPHONIC 1", "SYMPHONIC 2", "ROTARY SP 5"
+        },
+        item_values = { 
+          0,
+          66 * 0x80 + 17, 66 * 0x80 +  8, 66 * 0x80 + 16, 66 * 0x80 +  1, 
+          65 * 0x80 +  2, 65 * 0x80 +  0, 65 * 0x80 +  1, 65 * 0x80 +  8, 
+          65 * 0x80 +  3, 65 * 0x80 +  4, 65 * 0x80 +  5, 65 * 0x80 +  6, 
+          65 * 0x80 +  7, 
+          66 * 0x80 +  0, 66 * 0x80 +  2, 
+          67 * 0x80 +  8, 67 * 0x80 + 16, 67 * 0x80 + 17, 67 * 0x80 +  1, 
+          67 * 0x80 +  0, 67 * 0x80 +  7, 
+          68 * 0x80 + 16, 68 * 0x80 +  0, 68 * 0x80 + 18 
+        },
+        default_value = 1
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_send_level",
         type = "cc",
         name = "Send Level",
         number = 0x5D,
@@ -163,16 +192,7 @@ return SynthDefinition {
         default_value = 0
       },
       Parameter {
-        id = "nsx_39_ch1_chorus_type",
-        name = "Type",
-        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x20, "vv", 0x00, 0xF7},
-        number = 0,
-        items = { "CHORUS6", "CELESTE1", "FLANGER5", "SYMPHONIC2", "OFF" },
-        item_values = { 65, 66, 67, 68, 0 },
-        default_value = 1
-      },
-      Parameter {
-        id = "nsx_39_ch1_chorus_return",
+        id = "nsx_39_global_chorus_return",
         sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x2C, "vv", 0xF7},
         name = "Return",
         number = 0,
@@ -181,7 +201,7 @@ return SynthDefinition {
         default_value = 64
       },
       Parameter {
-        id = "nsx_39_ch1_chorus_pan",
+        id = "nsx_39_global_chorus_pan",
         sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x2D, "vv", 0xF7},
         name = "Pan",
         number = 0,
@@ -190,7 +210,7 @@ return SynthDefinition {
         default_value = 64
       },
       Parameter {
-        id = "nsx_39_ch1_chorus_to_reverb",
+        id = "nsx_39_global_chorus_to_reverb",
         sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x2E, "vv", 0xF7},
         name = "Send To Reverb",
         number = 0,
@@ -199,13 +219,121 @@ return SynthDefinition {
         default_value = 64
       },
       Parameter {
-        id = "nsx_39_ch1_chorus_dw",
-        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x2B, "vv", 0xF7},
-        name = "Dry/Wet",
+        id = "nsx_39_global_chorus_param1",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x22, "vv", 0xF7},
+        name = "LFO Freq (0.00Hz - 39.7Hz)",
         number = 0,
         min_value = 0,
         max_value = 0x7F,
         default_value = 64
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param2",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x23, "vv", 0xF7},
+        name = "LFO Depth",
+        number = 0,
+        min_value = 0,
+        max_value = 0x7F,
+        default_value = 64
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param3",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x24, "vv", 0xF7},
+        name = "Feedback Level/Delay Offset",
+        number = 0,
+        min_value = 1,
+        max_value = 0x7F,
+        default_value = 64
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param4",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x25, "vv", 0xF7},
+        name = "Deley Offset(0.0ms - 50ms)",
+        number = 0,
+        min_value = 0,
+        max_value = 0x7F,
+        default_value = 64
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param6",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x27, "vv", 0xF7},
+        name = "EQ Low Freq. (32Hz - 2.0kHz)",
+        number = 0,
+        min_value = 4,
+        max_value = 40,
+        default_value = 22
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param7",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x28, "vv", 0xF7},
+        name = "EQ Low Gain (-12dB - +12dB)",
+        number = 0,
+        min_value = 52,
+        max_value = 76,
+        default_value = 64
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param8",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x29, "vv", 0xF7},
+        name = "EQ High Freq. (500Hz - 16.0kHz)",
+        number = 0,
+        min_value = 28,
+        max_value = 58,
+        default_value = 43
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param9",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x2A, "vv", 0xF7},
+        name = "EQ High Gain (-12dB - +12dB)",
+        number = 0,
+        min_value = 52,
+        max_value = 76,
+        default_value = 64
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param11",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x30, "vv", 0xF7},
+        name = "EQ Mid Freq. (100Hz - 10.0kHz)",
+        number = 0,
+        min_value = 14,
+        max_value = 54,
+        default_value = 34
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param12",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x31, "vv", 0xF7},
+        name = "EQ Mid Gain (-12dB - +12dB)",
+        number = 0,
+        min_value = 52,
+        max_value = 76,
+        default_value = 64
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param13",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x32, "vv", 0xF7},
+        name = "EQ Mid Width (0.1 - 12.0)",
+        number = 0,
+        min_value = 1,
+        max_value = 120,
+        default_value = 61
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param14",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x33, "vv", 0xF7},
+        name = "LFO Phase Diff.(-180 - +180)",
+        number = 0,
+        min_value = 4,
+        max_value = 124,
+        default_value = 64
+      },
+      Parameter {
+        id = "nsx_39_global_chorus_param15",
+        sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x34, "vv", 0xF7},
+        name = "Input Mode",
+        number = 0,
+        items = { "Mono", "Stereo" },
+        item_values = { 0, 1 },
+        default_value = 1
       }
     }
   },
