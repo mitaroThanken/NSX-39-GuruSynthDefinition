@@ -183,15 +183,6 @@ return SynthDefinition {
         default_value = 1
       },
       Parameter {
-        id = "nsx_39_global_chorus_send_level",
-        type = "cc",
-        name = "Send Level",
-        number = 0x5D,
-        min_value = 0,
-        max_value = 0x7F,
-        default_value = 0
-      },
-      Parameter {
         id = "nsx_39_global_chorus_return",
         sysex_message_template = {0xF0, 0x43, 0x10, 0x4C, 0x02, 0x01, 0x2C, "vv", 0xF7},
         name = "Return",
